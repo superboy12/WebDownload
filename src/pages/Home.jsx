@@ -194,29 +194,28 @@ export default function Home() {
             </a>
           </p>
 
-          {/* Release Notes Section */}
-          {validReleases.length > 0 && (
-            <div id="release-notes-section" style={{ marginTop: '40px' }}>
-              <div className="section-bar">Catatan Rilis (Changelog)</div>
-              <div id="release-notes-container">
-                {validReleases.map(release => {
-                  let bodyHtml = '<i>Tidak ada catatan rilis.</i>';
-                  if (release.body) {
-                    bodyHtml = marked.parse(release.body);
-                  }
-                  return (
-                    <div className="release-note-card" key={release.id}>
-                      <h3 className="release-note-version">
-                        Update Versi {release.tag_name} <span className="release-note-date">({formatDate(release.published_at)})</span>
-                      </h3>
-                      <div className="changelog-content" style={{ marginTop: 0, background: 'transparent', border: 'none', padding: 0 }} dangerouslySetInnerHTML={{ __html: bodyHtml }}>
-                      </div>
-                    </div>
-                  );
-                })}
+          {/* Release Notes - Latest Only */}
+          {validReleases.length > 0 && (() => {
+            const latest = validReleases[0];
+            const bodyHtml = latest.body ? marked.parse(latest.body) : '<i>Tidak ada catatan rilis.</i>';
+            return (
+              <div id="release-notes-section" style={{ marginTop: '40px' }}>
+                <div className="section-bar">Catatan Rilis Terbaru</div>
+                <div className="release-note-card">
+                  <h3 className="release-note-version">
+                    Update Versi {latest.tag_name} <span className="release-note-date">({formatDate(latest.published_at)})</span>
+                  </h3>
+                  <div className="changelog-content" style={{ marginTop: 0, background: 'transparent', border: 'none', padding: 0 }} dangerouslySetInnerHTML={{ __html: bodyHtml }}>
+                  </div>
+                  <div style={{ marginTop: '12px' }}>
+                    <a href={`https://github.com/${GITHUB_REPO}/releases`} className="dl-link" target="_blank" rel="noopener noreferrer" style={{ fontSize: '12px' }}>
+                      Lihat semua catatan rilis di GitHub &rarr;
+                    </a>
+                  </div>
+                </div>
               </div>
-            </div>
-          )}
+            );
+          })()}
 
           {/* Info section */}
           <div className="section-bar">Cara Menggunakan</div>
