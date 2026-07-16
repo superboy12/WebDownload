@@ -1,0 +1,415 @@
+/* ==============================
+   Reset & Base
+   ============================== */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  background: #f5f5f5;
+  color: #333;
+}
+
+a { color: #1a6eb5; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ==============================
+   Top Header
+   ============================== */
+.top-bar {
+  background: #ffffff;
+  border-bottom: 1px solid #d0d0d0;
+  padding: 12px 0;
+}
+.top-bar-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+.logo-area {
+  display: flex;
+  align-items: center;
+}
+
+/* App logo (icon + text, bukan logo dinas) */
+.app-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+.app-logo-icon {
+  flex-shrink: 0;
+}
+.app-logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+.app-logo-name {
+  font-size: 18px;
+  font-weight: bold;
+  color: #1a3a6b;
+  letter-spacing: 0.5px;
+}
+.app-logo-sub {
+  font-size: 10px;
+  color: #777;
+  margin-top: 2px;
+}
+
+/* Blue bar under header */
+.blue-bar {
+  height: 5px;
+  background: #1a3a6b;
+}
+
+/* ==============================
+   Main Layout
+   ============================== */
+.main-wrapper {
+  max-width: 960px;
+  margin: 24px auto;
+  padding: 0 20px;
+}
+.content-area {
+  background: #ffffff;
+  border: 1px solid #cccccc;
+  padding: 28px 32px;
+}
+
+/* ==============================
+   Page Title & Intro
+   ============================== */
+.page-title {
+  font-size: 22px;
+  font-weight: bold;
+  color: #1a3a6b;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e0e0e0;
+}
+.page-intro {
+  font-size: 13px;
+  color: #444;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+/* ==============================
+   Big Download Button
+   ============================== */
+.big-download-box {
+  text-align: center;
+  margin: 20px 0 28px;
+}
+.big-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  background: linear-gradient(to bottom, #2580d4, #1560a8);
+  color: white;
+  padding: 14px 36px;
+  border-radius: 4px;
+  border: 1px solid #0e4f8a;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.15s;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+.big-download-btn:hover {
+  background: linear-gradient(to bottom, #2d8fe8, #1a6eb5);
+  text-decoration: none;
+}
+.dl-icon { flex-shrink: 0; }
+.dl-text { text-align: left; }
+.dl-name { font-size: 15px; font-weight: bold; }
+.dl-ver { font-size: 11px; opacity: 0.85; margin-top: 2px; }
+.dl-note {
+  font-size: 12px;
+  color: #888;
+  margin-top: 10px;
+}
+
+/* ==============================
+   Section Bar (Blue header row)
+   ============================== */
+.section-bar {
+  background: #1a3a6b;
+  color: white;
+  font-size: 13px;
+  font-weight: bold;
+  padding: 7px 12px;
+  margin: 24px 0 14px;
+}
+
+/* ==============================
+   Download Table
+   ============================== */
+/* Badge versi */
+.badge-latest {
+  display: inline-block;
+  background: #1a6eb5;
+  color: white;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 2px 8px;
+  border-radius: 3px;
+  letter-spacing: 0.5px;
+}
+
+/* Badge versi spesifik (tag name) */
+.badge-version {
+  display: inline-block;
+  background: #eef3f8;
+  color: #1a3a6b;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 2px 7px;
+  border-radius: 3px;
+  border: 1px solid #c5d7eb;
+  letter-spacing: 0.3px;
+}
+
+/* Loading / empty / error states */
+.tbl-loading, .tbl-empty, .tbl-error {
+  text-align: center;
+  padding: 20px 10px;
+  color: #888;
+  font-size: 13px;
+}
+.tbl-error { color: #a00; }
+.tbl-error a { color: #1a6eb5; }
+
+/* Loading spinner */
+.loading-spinner {
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  border: 2px solid #ccc;
+  border-top-color: #1a6eb5;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  vertical-align: middle;
+  margin-right: 4px;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Link semua versi */
+.dl-all-versions {
+  font-size: 12px;
+  color: #888;
+  margin: 8px 0 0;
+}
+.dl-all-versions a {
+  color: #1a6eb5;
+  font-weight: bold;
+}
+.dl-all-versions a:hover { text-decoration: underline; }
+
+.dl-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+.dl-table th {
+  text-align: left;
+  background: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 7px 10px;
+  font-weight: bold;
+  color: #333;
+}
+.dl-table td {
+  border: 1px solid #ddd;
+  padding: 8px 10px;
+  vertical-align: middle;
+}
+.dl-table tr:hover td { background: #f7f7f7; }
+.dl-link {
+  color: #1a6eb5;
+  font-weight: bold;
+}
+.dl-link:hover { text-decoration: underline; }
+.btn-small {
+  display: inline-block;
+  background: #1a6eb5;
+  color: white;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 12px;
+  text-decoration: none;
+  border: 1px solid #1057a0;
+  transition: background 0.15s;
+}
+.btn-small:hover { background: #1560a8; text-decoration: none; }
+
+/* ==============================
+   How-to List
+   ============================== */
+.how-to-list {
+  margin: 0 0 16px 24px;
+  line-height: 2;
+  font-size: 13px;
+  color: #333;
+}
+.how-to-list li { margin-bottom: 4px; }
+
+/* ==============================
+   Note Box
+   ============================== */
+.note-box {
+  background: #fffbe6;
+  border: 1px solid #e6c800;
+  border-left: 4px solid #e6c800;
+  padding: 10px 14px;
+  font-size: 12px;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+.note-box code {
+  background: #f0f0f0;
+  padding: 1px 4px;
+  border: 1px solid #ccc;
+  font-size: 11px;
+  font-family: 'Courier New', monospace;
+}
+
+/* ==============================
+   About Text
+   ============================== */
+.about-text {
+  font-size: 13px;
+  color: #444;
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+
+/* ==============================
+   Release Notes (Changelog)
+   ============================== */
+.release-notes-toggle {
+  margin-top: 8px;
+}
+.release-notes-toggle details summary {
+  cursor: pointer;
+  color: #1a6eb5;
+  font-size: 12px;
+  font-weight: bold;
+  outline: none;
+  user-select: none;
+  padding: 4px 0;
+  display: inline-block;
+}
+.release-notes-toggle details summary:hover {
+  text-decoration: underline;
+}
+.changelog-content {
+  margin-top: 10px;
+  font-size: 12px;
+  color: #333;
+  background: #f8fbff;
+  padding: 12px 16px;
+  border-radius: 6px;
+  border: 1px solid #dbeafe;
+  line-height: 1.6;
+}
+.changelog-content ul, .changelog-content ol {
+  margin-left: 20px;
+  margin-bottom: 8px;
+}
+.changelog-content p {
+  margin-bottom: 8px;
+}
+.changelog-content p:last-child {
+  margin-bottom: 0;
+}
+.changelog-content h1, .changelog-content h2, .changelog-content h3 {
+  font-size: 14px;
+  margin-bottom: 8px;
+  margin-top: 12px;
+  color: #1a3a6b;
+}
+.changelog-content h1:first-child, .changelog-content h2:first-child, .changelog-content h3:first-child {
+  margin-top: 0;
+}
+.changelog-content code {
+  background: #eef3f8;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.release-note-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.release-note-version {
+  font-size: 16px;
+  color: #1a3a6b;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.release-note-date {
+  font-size: 13px;
+  color: #888;
+  font-weight: normal;
+}
+
+/* ==============================
+   Footer
+   ============================== */
+.footer {
+  background: #1a3a6b;
+  color: #ccc;
+  padding: 16px 0;
+  margin-top: 0;
+}
+.footer-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 12px;
+}
+.footer-link {
+  color: #90b8e0;
+  text-decoration: none;
+}
+.footer-link:hover { text-decoration: underline; color: white; }
+
+/* ==============================
+   Toast
+   ============================== */
+.toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(80px);
+  background: #1a3a6b;
+  color: white;
+  padding: 10px 22px;
+  border-radius: 3px;
+  font-size: 13px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+  transition: transform 0.3s ease;
+  z-index: 9999;
+  white-space: nowrap;
+}
+.toast.show { transform: translateX(-50%) translateY(0); }
