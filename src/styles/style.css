@@ -413,3 +413,270 @@ a:hover { text-decoration: underline; }
   white-space: nowrap;
 }
 .toast.show { transform: translateX(-50%) translateY(0); }
+
+/* ==============================
+   Header Auth Button
+   ============================== */
+.top-bar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header-auth {
+  flex-shrink: 0;
+}
+.btn-login-header {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #1a3a6b;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.btn-login-header:hover { background: #2580d4; }
+.btn-logout {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  color: #1a3a6b;
+  border: 1px solid #1a3a6b;
+  padding: 5px 14px;
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.btn-logout:hover { background: #1a3a6b; color: white; }
+
+/* ==============================
+   Login Notice Banner
+   ============================== */
+.login-notice {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fffbe6;
+  border: 1px solid #e6c800;
+  border-left: 4px solid #e6c800;
+  padding: 9px 14px;
+  font-size: 13px;
+  color: #555;
+  margin-bottom: 16px;
+  border-radius: 2px;
+  flex-wrap: wrap;
+}
+.login-notice svg { flex-shrink: 0; color: #b8860b; }
+.login-notice-btn {
+  background: none;
+  border: none;
+  color: #1a6eb5;
+  font-weight: bold;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+}
+.login-notice-btn:hover { color: #0e4f8a; }
+
+/* ==============================
+   Locked Button States
+   ============================== */
+.big-download-btn.locked {
+  background: linear-gradient(to bottom, #7a8a9e, #5a6a7e);
+  border-color: #4a5a6e;
+  cursor: pointer;
+  border: none;
+}
+.big-download-btn.locked:hover {
+  background: linear-gradient(to bottom, #2d8fe8, #1a6eb5);
+  text-decoration: none;
+}
+.dl-link-locked {
+  background: none;
+  border: none;
+  color: #1a6eb5;
+  font-weight: bold;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+  opacity: 0.7;
+  transition: opacity 0.15s;
+}
+.dl-link-locked:hover { opacity: 1; text-decoration: underline; }
+.locked-btn {
+  background: #7a8a9e !important;
+  border-color: #5a6a7e !important;
+  cursor: pointer;
+}
+.locked-btn:hover { background: #1560a8 !important; }
+
+/* ==============================
+   Login Modal
+   ============================== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeInOverlay 0.2s ease;
+}
+@keyframes fadeInOverlay {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.modal-box {
+  background: #fff;
+  width: 100%;
+  max-width: 380px;
+  border-radius: 6px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.28);
+  overflow: hidden;
+  animation: slideUpModal 0.22s ease;
+}
+@keyframes slideUpModal {
+  from { transform: translateY(18px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+.modal-header {
+  background: #1a3a6b;
+  color: white;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.modal-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.modal-title {
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 1.3;
+}
+.modal-subtitle {
+  font-size: 11px;
+  opacity: 0.75;
+  margin-top: 2px;
+}
+.modal-close {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.7);
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  border-radius: 3px;
+  transition: color 0.15s, background 0.15s;
+}
+.modal-close:hover { color: white; background: rgba(255,255,255,0.15); }
+
+.modal-form {
+  padding: 24px 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.modal-error {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: #fff0f0;
+  border: 1px solid #f5b5b5;
+  border-left: 3px solid #d00;
+  color: #a00;
+  padding: 8px 12px;
+  border-radius: 3px;
+  font-size: 12px;
+  line-height: 1.4;
+}
+.modal-error svg { flex-shrink: 0; }
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.form-label {
+  font-size: 12px;
+  font-weight: bold;
+  color: #333;
+}
+.form-input {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 8px 10px;
+  font-size: 13px;
+  color: #333;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  width: 100%;
+}
+.form-input:focus {
+  border-color: #2580d4;
+  box-shadow: 0 0 0 2px rgba(37, 128, 212, 0.15);
+}
+
+.input-password-wrap {
+  position: relative;
+}
+.input-password-wrap .form-input {
+  padding-right: 36px;
+}
+.toggle-password {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #888;
+  cursor: pointer;
+  padding: 2px;
+  display: flex;
+  align-items: center;
+}
+.toggle-password:hover { color: #333; }
+
+.btn-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  background: linear-gradient(to bottom, #2580d4, #1560a8);
+  color: white;
+  border: 1px solid #0e4f8a;
+  border-radius: 3px;
+  padding: 10px;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.15s;
+  width: 100%;
+  margin-top: 4px;
+}
+.btn-submit:hover:not(:disabled) {
+  background: linear-gradient(to bottom, #2d8fe8, #1a6eb5);
+}
+.btn-submit:disabled {
+  opacity: 0.75;
+  cursor: not-allowed;
+}
+
