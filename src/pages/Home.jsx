@@ -26,6 +26,26 @@ function isZipAsset(name) {
   return name.toLowerCase().endsWith('.zip');
 }
 
+// Filter out auto-generated CI lines from GitHub Actions release body
+function filterReleaseBody(body) {
+  if (!body) return '';
+  const filtered = body
+    .split('\n')
+    .filter(line => {
+      const t = line.trim();
+      return (
+        !t.startsWith('\uD83D\uDCE6') &&   // 📦
+        !t.startsWith('\uD83C\uDF3F') &&   // 🌿
+        !t.startsWith('\uD83D\uDD28') &&   // 🔨
+        !t.match(/^\*\*Ref:\*\*/) &&
+        !t.match(/^\*\*Commit:\*\*/)
+      );
+    })
+    .join('\n')
+    .trim();
+  return filtered;
+}
+
 export default function Home() {
   const [releases, setReleases] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -346,7 +366,8 @@ export default function Home() {
           {/* Release Notes - Latest Only */}
           {validReleases.length > 0 && (() => {
             const latest = validReleases[0];
-            const bodyHtml = latest.body ? marked.parse(latest.body) : '<i>Tidak ada catatan rilis.</i>';
+            const cleanBody = filterReleaseBody(latest.body);
+            const bodyHtml = cleanBody ? marked.parse(cleanBody) : '<i>Tidak ada catatan rilis.</i>';
             return (
               <div id="release-notes-section" style={{ marginTop: '40px' }}>
                 <div className="section-bar">Catatan Rilis Terbaru</div>
@@ -356,40 +377,10 @@ export default function Home() {
                   </h3>
                   <div className="changelog-content" style={{ marginTop: 0, background: 'transparent', border: 'none', padding: 0 }} dangerouslySetInnerHTML={{ __html: bodyHtml }}>
                   </div>
-                  <div style={{ marginTop: '12px' }}>
-                    <a href={`https://github.com/${GITHUB_REPO}/releases`} className="dl-link" target="_blank" rel="noopener noreferrer" style={{ fontSize: '12px' }}>
-                      Lihat semua catatan rilis di GitHub &rarr;
-                    </a>
-                  </div>
                 </div>
               </div>
             );
           })()}
-
-          {/* Info section */}
-          <div className="section-bar">Cara Menggunakan</div>
-          <ol className="how-to-list">
-            <li>Download file <strong>SIMAK-TPP-Windows-latest.zip</strong> menggunakan tombol di atas.</li>
-            <li>Klik kanan pada file ZIP yang sudah didownload, pilih <strong>"Extract All..."</strong> dan pilih folder tujuan.</li>
-            <li>Buka folder hasil ekstrak, lalu jalankan file <strong>SIMAK-TPP.exe</strong>.</li>
-          </ol>
-          <div className="note-box">
-            <strong>&#9888; Perhatian:</strong> Semua file dalam folder hasil ekstrak ZIP harus tetap berada dalam
-            <strong>satu folder yang sama</strong> dengan <code>SIMAK-TPP.exe</code>.
-            Jangan memindahkan file <code>.exe</code> ke luar folder.
-          </div>
-
-          {/* About section */}
-          <div className="section-bar">Tentang SIMAK-TPP</div>
-          <p className="about-text">
-            SIMAK-TPP adalah aplikasi desktop untuk Windows yang dirancang membantu pengelolaan data
-            <strong>Tambahan Penghasilan Pegawai (TPP)</strong>. Aplikasi ini bersifat <em>portable</em>
-            sehingga tidak memerlukan proses instalasi. Cukup ekstrak dan langsung jalankan.
-          </p>
-          <p className="about-text">
-            Source code tersedia secara terbuka di
-            <a href={`https://github.com/${GITHUB_REPO}`} className="dl-link" target="_blank" rel="noopener noreferrer"> GitHub Repository</a>.
-          </p>
         </div>
       </div>
 
